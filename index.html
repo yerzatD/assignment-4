@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineAI — Смотри умнее</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__inner">
+      <div class="preloader__logo">CineAI</div>
+      <div class="preloader__bar"><div class="preloader__fill"></div></div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#" class="header__logo">
+        <span class="logo__icon">◈</span>
+        <span class="logo__text">CineAI</span>
+      </a>
+
+      <nav class="header__nav" id="mainNav">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#movies" class="nav__link">Фильмы</a></li>
+          <li class="nav__item"><a href="#series" class="nav__link">Сериалы</a></li>
+          <li class="nav__item"><a href="#mood" class="nav__link">По настроению</a></li>
+          <li class="nav__item"><a href="#ai-section" class="nav__link nav__link--ai">AI Помощник</a></li>
+        </ul>
+      </nav>
+
+      <div class="header__actions">
+        <button class="btn btn--ghost btn--sm" id="btnLogin">Войти</button>
+        <button class="btn btn--primary btn--sm" id="btnRegister">Регистрация</button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Светлая/Тёмная тема">🌙</button>
+        <button class="btn btn--ai" id="btnOpenAI" aria-label="Открыть AI-ассистент">
+          <span class="ai-pulse"></span>
+          <span>AI</span>
+        </button>
+        <button class="burger" id="burger" aria-label="Меню">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="hero__bg">
+      <div class="hero__gradient"></div>
+      <div class="hero__grid-lines"></div>
+    </div>
+    <div class="container hero__content">
+      <div class="hero__badge">✦ Powered by AI</div>
+      <h1 class="hero__title">Кино,<br/>которое <em>чувствует</em><br/>тебя</h1>
+      <p class="hero__subtitle">Умный стриминг, который подбирает фильмы под твоё настроение, а не под алгоритм.</p>
+      <div class="hero__cta">
+        <button class="btn btn--primary btn--lg" id="heroWatchBtn">Смотреть сейчас</button>
+        <button class="btn btn--outline btn--lg" id="heroAiBtn">
+          <span class="btn__icon">◈</span> Спросить AI
+        </button>
+      </div>
+
+      <div class="hero__search">
+        <div class="search__wrapper">
+          <span class="search__icon">⌕</span>
+          <input type="text" class="search__input" id="searchInput" placeholder="Найти фильм, сериал, актёра..." autocomplete="off" />
+          <button class="search__btn" id="searchBtn">Найти</button>
+        </div>
+        <div class="search__results" id="searchResults" role="listbox" aria-label="Результаты поиска"></div>
+      </div>
+
+      <div class="hero__moods">
+        <span class="moods__label">Сейчас хочу:</span>
+        <div class="moods__tags">
+          <button class="mood-tag" data-mood="fun">😄 Веселое</button>
+          <button class="mood-tag" data-mood="dark">🌑 Мрачное</button>
+          <button class="mood-tag" data-mood="romantic">💫 Романтику</button>
+          <button class="mood-tag" data-mood="cozy">☕ Уютное</button>
+          <button class="mood-tag" data-mood="tense">⚡ Напряжение</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__scroll-hint">
+      <span>Прокрутите вниз</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- MOOD SECTION -->
+  <section class="section mood-section" id="mood">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Подбор по <span class="text--accent">настроению</span></h2>
+        <p class="section__subtitle">Расскажи, как ты себя чувствуешь — AI найдёт идеальный фильм</p>
+      </div>
+      <div class="mood-grid" id="moodGrid">
+        <button class="mood-card" data-mood="fun">
+          <div class="mood-card__emoji">😄</div>
+          <div class="mood-card__label">Весёлое</div>
+          <div class="mood-card__desc">Комедии, приключения, анимация</div>
+        </button>
+        <button class="mood-card" data-mood="dark">
+          <div class="mood-card__emoji">🌑</div>
+          <div class="mood-card__label">Мрачное</div>
+          <div class="mood-card__desc">Триллеры, нуар, психологические драмы</div>
+        </button>
+        <button class="mood-card" data-mood="romantic">
+          <div class="mood-card__emoji">💫</div>
+          <div class="mood-card__label">Романтичное</div>
+          <div class="mood-card__desc">Мелодрамы, истории любви</div>
+        </button>
+        <button class="mood-card" data-mood="motivating">
+          <div class="mood-card__emoji">🔥</div>
+          <div class="mood-card__label">Мотивирующее</div>
+          <div class="mood-card__desc">Биографии, спорт, вдохновение</div>
+        </button>
+        <button class="mood-card" data-mood="cozy">
+          <div class="mood-card__emoji">☕</div>
+          <div class="mood-card__label">Уютное</div>
+          <div class="mood-card__desc">Slice of life, семейное, тёплое</div>
+        </button>
+        <button class="mood-card" data-mood="tense">
+          <div class="mood-card__emoji">⚡</div>
+          <div class="mood-card__label">Напряжённое</div>
+          <div class="mood-card__desc">Экшн, хорроры, детективы</div>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOVIES SECTION -->
+  <section class="section movies-section" id="movies">
+    <div class="container">
+      <div class="section__header section__header--flex">
+        <div>
+          <div class="section__tag">Топ сегодня</div>
+          <h2 class="section__title">Популярные <span class="text--accent">фильмы</span></h2>
+        </div>
+        <div class="section__controls">
+          <button class="tab-btn tab-btn--active" data-tab="movies">Фильмы</button>
+          <button class="tab-btn" data-tab="series">Сериалы</button>
+        </div>
+      </div>
+
+      <div class="filter-bar" id="filterBar">
+        <button class="filter-btn filter-btn--active" data-filter="all">Все</button>
+        <button class="filter-btn" data-filter="fun">Весёлые</button>
+        <button class="filter-btn" data-filter="dark">Мрачные</button>
+        <button class="filter-btn" data-filter="romantic">Романтика</button>
+        <button class="filter-btn" data-filter="tense">Напряжённые</button>
+        <button class="filter-btn" data-filter="motivating">Мотивация</button>
+        <button class="filter-btn" data-filter="cozy">Уют</button>
+      </div>
+
+      <div class="movies-grid" id="moviesGrid" role="list">
+        <!-- Карточки генерируются JS -->
+      </div>
+
+      <div class="empty-state" id="emptyState" style="display:none;">
+        <div class="empty-state__icon">◈</div>
+        <p>По вашему запросу ничего не найдено</p>
+        <button class="btn btn--ghost btn--sm" id="resetFilter">Сбросить фильтр</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERIES SECTION -->
+  <section class="section series-section" id="series" style="display:none;">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__tag">Лучшее</div>
+        <h2 class="section__title">Популярные <span class="text--accent">сериалы</span></h2>
+      </div>
+      <div class="movies-grid" id="seriesGrid" role="list">
+        <!-- Карточки сериалов генерируются JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- AI SECTION -->
+  <section class="section ai-section" id="ai-section">
+    <div class="container">
+      <div class="ai-block">
+        <div class="ai-block__info">
+          <div class="ai-block__badge">◈ AI Ассистент</div>
+          <h2 class="ai-block__title">Твой личный<br/>кино-советник</h2>
+          <p class="ai-block__desc">Не знаешь, что посмотреть? Просто опиши своё настроение или запрос — AI подберёт идеальный фильм за секунды.</p>
+          <ul class="ai-block__features">
+            <li>✦ Подбор по настроению и атмосфере</li>
+            <li>✦ Анализ жанровых предпочтений</li>
+            <li>✦ Рекомендации на основе истории просмотров</li>
+            <li>✦ Ответы на любые вопросы о кино</li>
+          </ul>
+          <button class="btn btn--primary btn--lg" id="openAiFromSection">Открыть AI-чат</button>
+        </div>
+
+        <div class="ai-block__demo">
+          <div class="chat-demo">
+            <div class="chat-demo__header">
+              <span class="chat-demo__dot chat-demo__dot--active"></span>
+              <span>CineAI Assistant</span>
+            </div>
+            <div class="chat-demo__messages">
+              <div class="chat-msg chat-msg--user">
+                <div class="chat-msg__bubble">Хочу что-то уютное на вечер, устал от работы 😔</div>
+              </div>
+              <div class="chat-msg chat-msg--ai">
+                <div class="chat-msg__avatar">◈</div>
+                <div class="chat-msg__bubble">
+                  Понимаю! После тяжёлого дня идеально подойдут:
+                  <ul>
+                    <li><strong>«Достать ножи»</strong> — остроумный детектив с тёплой атмосферой</li>
+                    <li><strong>«Поезд в Пусан»</strong> — держит в напряжении, но с душой</li>
+                    <li><strong>«Тед Лассо»</strong> — сериал, который поднимет настроение 🏆</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="chat-msg chat-msg--user">
+                <div class="chat-msg__bubble">Расскажи подробнее про Тед Лассо</div>
+              </div>
+              <div class="chat-msg chat-msg--ai">
+                <div class="chat-msg__avatar">◈</div>
+                <div class="chat-msg__bubble chat-msg__bubble--typing" id="demoTyping">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY SECTION -->
+  <section class="section why-section" id="why">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Почему <span class="text--accent">CineAI</span> лучше</h2>
+        <p class="section__subtitle">Мы переосмыслили стриминг</p>
+      </div>
+
+      <div class="compare-grid">
+        <div class="compare-card compare-card--old">
+          <div class="compare-card__label">Обычные платформы</div>
+          <ul class="compare-list compare-list--minus">
+            <li>Алгоритмы без понимания настроения</li>
+            <li>Бесконечный скроллинг в поисках фильма</li>
+            <li>Рекомендации по истории — не по эмоции</li>
+            <li>Нет живого диалога с сервисом</li>
+            <li>Один размер для всех пользователей</li>
+          </ul>
+        </div>
+        <div class="compare-vs">VS</div>
+        <div class="compare-card compare-card--new">
+          <div class="compare-card__label">CineAI</div>
+          <ul class="compare-list compare-list--plus">
+            <li>AI понимает твоё настроение и контекст</li>
+            <li>Мгновенный подбор за 1 запрос</li>
+            <li>Рекомендации под эмоцию прямо сейчас</li>
+            <li>Живой диалог с AI-ассистентом</li>
+            <li>Гиперперсонализация под каждого</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section how-section" id="how">
+    <div class="container">
+      <div class="section__header">
+        <h2 class="section__title">Как это <span class="text--accent">работает</span></h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card" data-step="1">
+          <div class="step-card__number">01</div>
+          <div class="step-card__icon">🎭</div>
+          <h3 class="step-card__title">Выбираешь настроение</h3>
+          <p class="step-card__desc">Жми на карточку настроения или просто опиши, как себя чувствуешь</p>
+        </div>
+        <div class="step-card" data-step="2">
+          <div class="step-card__number">02</div>
+          <div class="step-card__icon">◈</div>
+          <h3 class="step-card__title">AI анализирует запрос</h3>
+          <p class="step-card__desc">Умный алгоритм понимает контекст, жанр и атмосферу, которая тебе нужна</p>
+        </div>
+        <div class="step-card" data-step="3">
+          <div class="step-card__number">03</div>
+          <div class="step-card__icon">🎬</div>
+          <h3 class="step-card__title">Получаешь подборку</h3>
+          <p class="step-card__desc">Персональная подборка из тысяч фильмов и сериалов именно для тебя</p>
+        </div>
+        <div class="step-card" data-step="4">
+          <div class="step-card__number">04</div>
+          <div class="step-card__icon">🍿</div>
+          <h3 class="step-card__title">Смотришь и наслаждаешься</h3>
+          <p class="step-card__desc">Никакого бесконечного скроллинга — только кино, которое тебя зацепит</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" id="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="#" class="footer__logo">
+          <span class="logo__icon">◈</span>
+          <span class="logo__text">CineAI</span>
+        </a>
+        <p class="footer__tagline">Кино, которое тебя понимает</p>
+        <div class="footer__socials">
+          <a href="#" class="social-link" aria-label="Telegram">TG</a>
+          <a href="#" class="social-link" aria-label="VK">VK</a>
+          <a href="#" class="social-link" aria-label="YouTube">YT</a>
+          <a href="#" class="social-link" aria-label="Instagram">IG</a>
+        </div>
+      </div>
+
+      <nav class="footer__nav">
+        <div class="footer__col">
+          <h4 class="footer__col-title">Контент</h4>
+          <ul>
+            <li><a href="#movies">Фильмы</a></li>
+            <li><a href="#series">Сериалы</a></li>
+            <li><a href="#mood">По настроению</a></li>
+            <li><a href="#ai-section">AI Помощник</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Компания</h4>
+          <ul>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Блог</a></li>
+            <li><a href="#">Карьера</a></li>
+            <li><a href="#">Пресса</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__col-title">Поддержка</h4>
+          <ul>
+            <li><a href="#">Помощь</a></li>
+            <li><a href="#">Условия</a></li>
+            <li><a href="#">Конфиденциальность</a></li>
+            <li><a href="/cdn-cgi/l/email-protection#066e6f46656f6863676f287473"><span class="__cf_email__" data-cfemail="197170597a70777c7870376b6c">[email&#160;protected]</span></a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="container">
+        <p>© 2025 CineAI. Все права защищены.</p>
+        <p>Сделано с ❤️ и AI</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- AI CHAT MODAL -->
+  <div class="modal-overlay" id="aiModal" role="dialog" aria-modal="true" aria-label="AI Ассистент">
+    <div class="ai-modal">
+      <div class="ai-modal__header">
+        <div class="ai-modal__title">
+          <span class="ai-pulse"></span>
+          <span>CineAI Ассистент</span>
+        </div>
+        <button class="ai-modal__close" id="closeAiModal" aria-label="Закрыть">✕</button>
+      </div>
+
+      <div class="ai-modal__messages" id="chatMessages" role="log" aria-live="polite">
+        <div class="chat-msg chat-msg--ai">
+          <div class="chat-msg__avatar">◈</div>
+          <div class="chat-msg__bubble">
+            Привет! Я CineAI — твой персональный кино-советник 🎬<br/>
+            Расскажи, что хочешь посмотреть, или выбери настроение:
+            <div class="ai-quick-btns">
+              <button class="ai-quick-btn" data-query="веселое">😄 Весёлое</button>
+              <button class="ai-quick-btn" data-query="грустное">😔 Грустное</button>
+              <button class="ai-quick-btn" data-query="ужасы">👻 Ужасы</button>
+              <button class="ai-quick-btn" data-query="романтика">💫 Романтика</button>
+              <button class="ai-quick-btn" data-query="что посмотреть вечером">🌙 На вечер</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-modal__input-area">
+        <div class="ai-input-wrap">
+          <textarea class="ai-input" id="aiInput" rows="1" placeholder="Спроси меня о фильме или расскажи настроение..." aria-label="Введите запрос к AI"></textarea>
+          <button class="ai-send-btn" id="aiSendBtn" aria-label="Отправить">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <p class="ai-input__hint">CineAI может ошибаться. Используй как рекомендацию.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOVIE DETAIL MODAL -->
+  <div class="modal-overlay" id="movieModal" role="dialog" aria-modal="true" aria-label="Информация о фильме">
+    <div class="movie-modal">
+      <button class="movie-modal__close" id="closeMovieModal" aria-label="Закрыть">✕</button>
+      <div class="movie-modal__content" id="movieModalContent">
+        <!-- Контент генерируется JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div class="modal-overlay" id="authModal" role="dialog" aria-modal="true">
+    <div class="auth-modal">
+      <button class="movie-modal__close" id="closeAuthModal" aria-label="Закрыть">✕</button>
+      <div class="auth-tabs">
+        <button class="auth-tab auth-tab--active" data-auth="login">Войти</button>
+        <button class="auth-tab" data-auth="register">Регистрация</button>
+      </div>
+      <form class="auth-form" id="authForm" novalidate>
+        <div class="form-group" id="nameGroup" style="display:none;">
+          <label for="authName">Имя</label>
+          <input type="text" id="authName" name="name" placeholder="Ваше имя" />
+          <span class="form-error" id="nameError"></span>
+        </div>
+        <div class="form-group">
+          <label for="authEmail">Email</label>
+          <input type="email" id="authEmail" name="email" placeholder="your@email.com" />
+          <span class="form-error" id="emailError"></span>
+        </div>
+        <div class="form-group">
+          <label for="authPassword">Пароль</label>
+          <input type="password" id="authPassword" name="password" placeholder="••••••••" />
+          <span class="form-error" id="passwordError"></span>
+        </div>
+        <button type="submit" class="btn btn--primary btn--full" id="authSubmit">Войти</button>
+        <p class="auth-form__msg" id="authMsg"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- VIDEO PLAYER MODAL -->
+  <div class="modal-overlay" id="playerModal" role="dialog" aria-modal="true" aria-label="Просмотр">
+    <div class="player-modal">
+      <div class="player-modal__header">
+        <span class="player-modal__title" id="playerTitle">Загрузка...</span>
+        <button class="player-modal__close" id="closePlayerModal" aria-label="Закрыть">✕</button>
+      </div>
+      <iframe id="playerIframe" allowfullscreen allow="autoplay; fullscreen"></iframe>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
