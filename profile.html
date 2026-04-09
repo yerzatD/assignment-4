@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineAI Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="profile.css" />
+</head>
+<body class="profile-page">
+  <header class="header profile-header" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__logo">
+        <span class="logo__icon">◈</span>
+        <span class="logo__text">CineAI</span>
+      </a>
+      <div class="header__actions">
+        <a class="btn btn--ghost btn--sm" href="index.html">Back</a>
+        <button class="btn btn--primary btn--sm" id="logoutBtn">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="profile-hero">
+      <div class="container">
+        <article class="profile-card">
+          <div class="profile-avatar" id="profileAvatar">U</div>
+          <h1 class="profile-name" id="profileName">User</h1>
+          <p class="profile-email" id="profileEmail">No email</p>
+          <p class="profile-status" id="profileStatus">Signed in</p>
+          <div class="profile-stats">
+            <div class="profile-stat">
+              <strong id="favCount">0</strong>
+              <span>Favorites</span>
+            </div>
+            <div class="profile-stat">
+              <strong id="accountType">User</strong>
+              <span>Account</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section profile-favorites-section" id="profile-favorites">
+      <div class="container">
+        <div class="section__header">
+          <div class="section__tag">Library</div>
+          <h2 class="section__title">My Favorites</h2>
+          <p class="section__subtitle">Saved titles appear here automatically.</p>
+        </div>
+
+        <div class="profile-favorites-grid" id="profileFavoritesGrid"></div>
+
+        <div class="empty-state" id="profileFavoritesEmpty" style="display:none;">
+          <div class="empty-state__icon">♡</div>
+          <p>You have no favorites yet</p>
+          <a class="btn btn--ghost btn--sm" href="index.html#movies">Browse movies</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="profile.js"></script>
+</body>
+</html>

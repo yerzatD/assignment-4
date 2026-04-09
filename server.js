@@ -1,5 +1,5 @@
-/**
- * CineAI — Express Server Entry Point
+﻿/**
+ * CineAI вЂ” Express Server Entry Point
  * Node.js + Express + MongoDB (Mongoose)
  */
 
@@ -9,7 +9,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
-const connectDB = require('./config/db');
+const connectDB = require('./db');
 
 // --- Route imports ---
 const movieRoutes = require('./routes/movieRoutes');
@@ -31,9 +31,22 @@ const app = express();
 // Security headers
 app.use(helmet());
 
-// CORS — allow frontend origins
+// CORS вЂ” allow frontend origins
+const allowedOrigins = (
+  process.env.ALLOWED_ORIGINS ||
+  'http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173,http://localhost:5500,http://127.0.0.1:5500,http://localhost:5000,http://127.0.0.1:5000'
+)
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
 app.use(cors({
-  origin: (process.env.ALLOWED_ORIGINS || 'http://localhost:3000').split(','),
+  origin: (origin, callback) => {
+    if (!origin || origin === 'null' || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error(`CORS blocked for origin: ${origin}`));
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
@@ -48,13 +61,13 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
 
-// Rate limiting — protect against abuse
+// Rate limiting вЂ” protect against abuse
 const limiter = rateLimit({
   windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS) || 15 * 60 * 1000, // 15 min
   max: parseInt(process.env.RATE_LIMIT_MAX) || 100,
   standardHeaders: true,
   legacyHeaders: false,
-  message: { success: false, message: 'Слишком много запросов. Попробуйте позже.' },
+  message: { success: false, message: 'РЎР»РёС€РєРѕРј РјРЅРѕРіРѕ Р·Р°РїСЂРѕСЃРѕРІ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕР·Р¶Рµ.' },
 });
 app.use('/api', limiter);
 
@@ -75,8 +88,8 @@ app.get('/api/health', (req, res) => {
 });
 
 // 404 handler
-app.use('*', (req, res) => {
-  res.status(404).json({ success: false, message: 'Маршрут не найден' });
+app.use((req, res) => {
+  res.status(404).json({ success: false, message: 'РњР°СЂС€СЂСѓС‚ РЅРµ РЅР°Р№РґРµРЅ' });
 });
 
 /* ============================================================
@@ -89,8 +102,9 @@ app.use(require('./middleware/errorHandler'));
    ============================================================ */
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`\n🎬 CineAI Server running on port ${PORT} [${process.env.NODE_ENV}]`);
-  console.log(`📡 API: http://localhost:${PORT}/api/health\n`);
+  console.log(`\nрџЋ¬ CineAI Server running on port ${PORT} [${process.env.NODE_ENV}]`);
+  console.log(`рџ“Ў API: http://localhost:${PORT}/api/health\n`);
 });
 
 module.exports = app;
+

@@ -44,56 +44,56 @@ const MOVIES_DATA = [
     rating: 8.5, mood: ['dark', 'tense'],
     year: 2019, duration: '132 мин',
     description: 'Семья безработных аферистов постепенно проникает в жизнь зажиточного семейства. Острая социальная сатира с неожиданным финалом.',
-    poster: 'posters/5.jpg', trailer: '5xH0HfJHsaY', streamUrl: 'https://www.kinopoisk.ru/film/1309996/', director: 'Пон Чжун-хо',
+    poster: 'posters/5.jpg', trailer: '5xH0HfJHsaY', streamUrl: 'https://fbsite.top/film/4499322/', director: 'Пон Чжун-хо',
   },
   {
     id: 6, type: 'movie', title: 'Вечное сияние', genre: 'Романтика',
     rating: 8.3, mood: ['romantic', 'dark', 'cozy'],
     year: 2004, duration: '108 мин',
     description: 'Пара решает стереть воспоминания друг о друге после болезненного расставания. Нестандартная история о любви и памяти.',
-    poster: 'posters/6.jpg', trailer: '07-QBnEkgXU', streamUrl: 'https://www.kinopoisk.ru/film/47543/', director: 'Мишель Гондри',
+    poster: 'posters/6.jpg', trailer: '07-QBnEkgXU', streamUrl: 'https://fbsite.top/film/5492/', director: 'Мишель Гондри',
   },
   {
     id: 7, type: 'movie', title: 'Гладиатор', genre: 'Боевик',
     rating: 8.5, mood: ['tense', 'motivating'],
     year: 2000, duration: '155 мин',
     description: 'Римский генерал стал рабом и гладиатором. Он стремится отомстить коварному императору за убийство своей семьи.',
-    poster: 'posters/7.jpg', trailer: 'owK1qxDselE', streamUrl: 'https://www.kinopoisk.ru/film/711/', director: 'Ридли Скотт',
+    poster: 'posters/7.jpg', trailer: 'owK1qxDselE', streamUrl: 'https://fbsite.top/film/474/', director: 'Ридли Скотт',
   },
   {
     id: 8, type: 'movie', title: 'Большой куш', genre: 'Комедия',
     rating: 8.2, mood: ['fun', 'tense'],
     year: 2000, duration: '104 мин',
     description: 'Хаотичный криминальный мир Лондона с множеством персонажей, запутанных схем и неожиданных поворотов. Культовый фильм Гая Ричи.',
-    poster: 'posters/8.jpg', trailer: 'ulr_OgvfG64', streamUrl: 'https://www.kinopoisk.ru/film/6922/', director: 'Гай Ричи',
+    poster: 'posters/8.jpg', trailer: 'ulr_OgvfG64', streamUrl: 'https://fbsite.top/film/526/', director: 'Гай Ричи',
   },
   {
     id: 9, type: 'movie', title: 'Мне бы в небо', genre: 'Драма',
     rating: 7.7, mood: ['motivating', 'cozy'],
     year: 2009, duration: '109 мин',
     description: 'Корпоративный чистильщик, специализирующийся на увольнениях, летит по стране и переосмысливает смысл жизни.',
-    poster: 'posters/9.jpg', trailer: 'jOtEp5_wEW8', streamUrl: 'https://www.kinopoisk.ru/film/448433/', director: 'Джейсон Рейтман',
+    poster: 'posters/9.jpg', trailer: 'jOtEp5_wEW8', streamUrl: 'https://fbsite.top/film/464130/', director: 'Джейсон Рейтман',
   },
   {
     id: 10, type: 'movie', title: 'Реквием по мечте', genre: 'Драма',
     rating: 8.4, mood: ['dark'],
     year: 2000, duration: '102 мин',
     description: 'Четыре портрета людей, захваченных зависимостью. Тяжёлый, но мощный фильм о разрушении человеческих мечт.',
-    poster: 'posters/10.jpg', trailer: 'x3DlJlS-i08', streamUrl: 'https://www.kinopoisk.ru/film/7124/', director: 'Даррен Аронофски',
+    poster: 'posters/10.jpg', trailer: 'x3DlJlS-i08', streamUrl: 'https://fbsite.top/film/367/', director: 'Даррен Аронофски',
   },
   {
     id: 11, type: 'movie', title: 'Отступники', genre: 'Криминал',
     rating: 8.5, mood: ['tense', 'dark'],
     year: 2006, duration: '151 мин',
     description: 'Полиция внедряет агента в банду, пока гангстеры внедряют своего человека в полицию. Сложная игра с двойными агентами.',
-    poster: 'posters/11.jpg', trailer: 'xdEKI9APNPM', streamUrl: 'https://www.kinopoisk.ru/film/252587/', director: 'Мартин Скорсезе',
+    poster: 'posters/11.jpg', trailer: 'xdEKI9APNPM', streamUrl: 'https://fbsite.top/film/81314/reviews/', director: 'Мартин Скорсезе',
   },
   {
     id: 12, type: 'movie', title: 'Красота по-американски', genre: 'Драма',
     rating: 8.3, mood: ['dark', 'cozy'],
     year: 1999, duration: '122 мин',
     description: 'Мужчина переживает кризис среднего возраста и переосмысливает своё существование в идеальном пригородном доме.',
-    poster: 'posters/12.jpg', trailer: 'EbXXBIo-Jmk', streamUrl: 'https://www.kinopoisk.ru/film/3498/', director: 'Сэм Мендес',
+    poster: 'posters/12.jpg', trailer: 'EbXXBIo-Jmk', streamUrl: 'https://fbsite.top/film/351/cast/', director: 'Сэм Мендес',
   },
   /* ── НОВЫЕ ФИЛЬМЫ ── */
   {
@@ -101,28 +101,28 @@ const MOVIES_DATA = [
     rating: 8.6, mood: ['dark', 'tense'],
     year: 1995, duration: '127 мин',
     description: 'Два детектива охотятся за серийным убийцей, совершающим убийства по числу семи смертных грехов. Мрачный, захватывающий триллер с незабываемой концовкой.',
-    poster: 'posters/13.jpg', trailer: 'znmZoVkCjpI', streamUrl: 'https://www.kinopoisk.ru/film/8452/', director: 'Дэвид Финчер',
+    poster: 'posters/13.jpg', trailer: 'znmZoVkCjpI', streamUrl: 'https://fbsite.top/film/377/', director: 'Дэвид Финчер',
   },
   {
     id: 14, type: 'movie', title: 'Остров проклятых', genre: 'Триллер',
     rating: 8.1, mood: ['dark', 'tense'],
     year: 2010, duration: '138 мин',
     description: 'Федеральный маршал расследует исчезновение пациентки из психиатрической клиники на изолированном острове. Атмосферный психологический триллер Скорсезе.',
-    poster: 'posters/14.jpg', trailer: '5iaYLCiq5RM', streamUrl: 'https://www.kinopoisk.ru/film/467039/', director: 'Мартин Скорсезе',
+    poster: 'posters/14.jpg', trailer: '5iaYLCiq5RM', streamUrl: 'https://fbsite.top/film/397667/', director: 'Мартин Скорсезе',
   },
   {
     id: 15, type: 'movie', title: 'Начало', genre: 'Фантастика',
     rating: 8.8, mood: ['tense', 'dark', 'motivating'],
     year: 2010, duration: '148 мин',
     description: 'Вор, умеющий проникать в сны людей, получает задание внедрить идею в разум бизнесмена. Интеллектуальный блокбастер Кристофера Нолана о природе реальности.',
-    poster: 'posters/15.jpg', trailer: 'YoHD9XEInc0', streamUrl: 'https://www.kinopoisk.ru/film/447301/', director: 'Кристофер Нолан',
+    poster: 'posters/15.jpg', trailer: 'YoHD9XEInc0', streamUrl: 'https://fbsite.top/film/447301/', director: 'Кристофер Нолан',
   },
   {
     id: 16, type: 'movie', title: 'Мстители: Финал', genre: 'Супергерои',
     rating: 8.4, mood: ['tense', 'motivating', 'fun'],
     year: 2019, duration: '181 мин',
     description: 'Оставшиеся герои Земли собираются для финальной битвы против Таноса. Грандиозное завершение 22-фильмной саги Marvel.',
-    poster: 'posters/16.jpg', trailer: 'TcMBFSGVi1c', streamUrl: 'https://www.kinopoisk.ru/film/843650/', director: 'Братья Руссо',
+    poster: 'posters/16.jpg', trailer: 'TcMBFSGVi1c', streamUrl: 'https://fbsite.top/film/843650/', director: 'Братья Руссо',
   },
   {
     id: 17, type: 'movie', title: 'Железный человек', genre: 'Супергерои',
@@ -360,11 +360,94 @@ const AI_RESPONSES = {
    APP STATE
    ============================================================ */
 
+const API_BASE = (() => {
+  const isFileMode = window.location.protocol === 'file:';
+  const isLocalhost = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+  if (isFileMode) return 'http://localhost:5000';
+  if (isLocalhost && window.location.port && window.location.port !== '5000') return 'http://localhost:5000';
+  return '';
+})();
+
+const AUTH_API_BASE = `${API_BASE}/api/auth`;
+const AUTH_TOKEN_KEY = 'cineai_token';
+const AUTH_USER_KEY = 'cineai_user';
+
+function getCurrentUser() {
+  try {
+    return JSON.parse(localStorage.getItem(AUTH_USER_KEY) || 'null');
+  } catch {
+    return null;
+  }
+}
+
+function getAuthToken() {
+  return localStorage.getItem(AUTH_TOKEN_KEY) || '';
+}
+
+function getFavoritesStorageKey() {
+  const user = getCurrentUser();
+  return user?.id ? `cineai_favorites_${user.id}` : 'cineai_favorites_guest';
+}
+
+function getFavoritesLibraryKey() {
+  const user = getCurrentUser();
+  return user?.id ? `cineai_fav_library_${user.id}` : 'cineai_fav_library_guest';
+}
+
+function loadFavorites() {
+  try {
+    const data = JSON.parse(localStorage.getItem(getFavoritesStorageKey()) || '[]');
+    return Array.isArray(data) ? data : [];
+  } catch {
+    return [];
+  }
+}
+
+function loadFavoritesLibrary() {
+  try {
+    const data = JSON.parse(localStorage.getItem(getFavoritesLibraryKey()) || '{}');
+    return data && typeof data === 'object' ? data : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveFavoritesLibrary(library) {
+  localStorage.setItem(getFavoritesLibraryKey(), JSON.stringify(library));
+}
+
+function setAuthSession(user, token) {
+  localStorage.setItem(AUTH_TOKEN_KEY, token);
+  localStorage.setItem(AUTH_USER_KEY, JSON.stringify(user));
+}
+
+function clearAuthSession() {
+  localStorage.removeItem(AUTH_TOKEN_KEY);
+  localStorage.removeItem(AUTH_USER_KEY);
+}
+
+function applyAuthUI() {
+  const user = getCurrentUser();
+  const isAuthorized = Boolean(getAuthToken() && user);
+  const btnLogin = document.getElementById('btnLogin');
+  const btnRegister = document.getElementById('btnRegister');
+  const btnProfile = document.getElementById('btnProfile');
+  const btnLogout = document.getElementById('btnLogout');
+
+  btnLogin?.classList.toggle('is-hidden', isAuthorized);
+  btnRegister?.classList.toggle('is-hidden', isAuthorized);
+  btnProfile?.classList.toggle('is-hidden', !isAuthorized);
+  btnLogout?.classList.toggle('is-hidden', !isAuthorized);
+  if (btnProfile && user?.name) {
+    btnProfile.textContent = user.name.length > 14 ? `${user.name.slice(0, 14)}...` : user.name;
+  }
+}
+
 const state = {
   currentTab: 'movies',        // 'movies' | 'series'
   currentMood: localStorage.getItem('cineai_mood') || 'all',
   currentFilter: 'all',
-  favorites: JSON.parse(localStorage.getItem('cineai_favorites') || '[]'),
+  favorites: loadFavorites(),
   searchQuery: '',
   aiTyping: false,
 };
@@ -411,7 +494,7 @@ function getRatingClass(rating) {
  * Ready for: POST /api/user/favorites
  */
 function saveFavorites() {
-  localStorage.setItem('cineai_favorites', JSON.stringify(state.favorites));
+  localStorage.setItem(getFavoritesStorageKey(), JSON.stringify(state.favorites));
 }
 
 /**
@@ -419,18 +502,33 @@ function saveFavorites() {
  * @param {number} id
  */
 function toggleFavorite(id) {
+  const movie = MOVIES_DATA.find((item) => item.id === id);
+  const library = loadFavoritesLibrary();
   const idx = state.favorites.indexOf(id);
   if (idx === -1) {
     state.favorites.push(id);
+    if (movie) {
+      library[id] = {
+        id: movie.id,
+        title: movie.title,
+        poster: movie.poster,
+        year: movie.year,
+        rating: movie.rating,
+        type: movie.type,
+      };
+    }
   } else {
     state.favorites.splice(idx, 1);
+    delete library[id];
   }
   saveFavorites();
+  saveFavoritesLibrary(library);
   // Update all favorite buttons for this movie
   document.querySelectorAll(`[data-fav-id="${id}"]`).forEach(btn => {
     btn.classList.toggle('active', state.favorites.includes(id));
     btn.title = state.favorites.includes(id) ? 'Убрать из избранного' : 'В избранное';
   });
+  renderFavoritesSection();
 }
 
 /* ============================================================
@@ -546,6 +644,19 @@ function renderSeries() {
   renderMoviesToContainer(grid, data);
 }
 
+/**
+ * Render favorites section for current user
+ */
+function renderFavoritesSection() {
+  const grid = document.getElementById('favoritesGrid');
+  const empty = document.getElementById('favoritesEmpty');
+  if (!grid || !empty) return;
+
+  const data = MOVIES_DATA.filter((item) => state.favorites.includes(item.id));
+  const hasResults = renderMoviesToContainer(grid, data);
+  empty.style.display = hasResults ? 'none' : 'block';
+}
+
 /* ============================================================
    FILTER & SEARCH
    ============================================================ */
@@ -581,6 +692,32 @@ function filterByMood(mood) {
 }
 
 /**
+ * Pick and open a random movie
+ */
+function pickRandomMovie() {
+  const randomBtn = document.getElementById('heroRandomBtn');
+  randomBtn?.classList.add('btn--random-spin');
+  setTimeout(() => randomBtn?.classList.remove('btn--random-spin'), 650);
+
+  const movies = MOVIES_DATA.filter((item) => item.type === 'movie');
+  if (!movies.length) {
+    showToast('No movies available');
+    return;
+  }
+
+  let source = movies;
+  if (state.currentMood && state.currentMood !== 'all') {
+    const moodFiltered = movies.filter((item) => item.mood?.includes(state.currentMood));
+    if (moodFiltered.length) source = moodFiltered;
+  }
+
+  const randomMovie = source[Math.floor(Math.random() * source.length)];
+  switchTab('movies');
+  showMovieDetails(randomMovie.id);
+  showToast(`Random pick: ${randomMovie.title}`);
+}
+
+/**
  * Search movies by query
  * @param {string} query
  * Ready for: GET /api/search?q=
@@ -609,7 +746,10 @@ function searchMovies(query) {
 
   resultsEl.innerHTML = results.map(m => `
     <div class="search-result-item" data-id="${m.id}" role="option">
-      <div class="search-result-item__poster poster-placeholder" style="position:relative;width:36px;height:54px;">🎬</div>
+            ${m.poster
+        ? `<img src="${m.poster}" alt="${sanitize(m.title)}" class="search-result-item__poster" loading="lazy" onerror="this.outerHTML='<div class=\\'search-result-item__poster poster-placeholder\\'>&#127916;</div>'">`
+        : `<div class="search-result-item__poster poster-placeholder">&#127916;</div>`
+      }
       <div class="search-result-item__info">
         <h4>${sanitize(m.title)}</h4>
         <span>${sanitize(m.genre)} · ${m.year} · ★${m.rating}</span>
@@ -1237,6 +1377,7 @@ function bindEvents() {
   document.getElementById('openAiFromSection')?.addEventListener('click', openAiChat);
   // Hero AI button
   document.getElementById('heroAiBtn')?.addEventListener('click', openAiChat);
+  document.getElementById('heroRandomBtn')?.addEventListener('click', pickRandomMovie);
 
   // Close AI modal
   document.getElementById('closeAiModal')?.addEventListener('click', closeAiChat);
@@ -1256,9 +1397,22 @@ function bindEvents() {
     switchAuthMode('register');
     openModal('authModal');
   });
+  document.getElementById('btnLogout')?.addEventListener('click', () => {
+    clearAuthSession();
+    state.favorites = loadFavorites();
+    applyAuthUI();
+    renderMovies();
+    renderSeries();
+    renderFavoritesSection();
+    showToast('Logged out');
+  });
   document.getElementById('heroWatchBtn')?.addEventListener('click', () => {
-    switchAuthMode('register');
-    openModal('authModal');
+    if (getAuthToken()) {
+      document.getElementById('favorites')?.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      switchAuthMode('register');
+      openModal('authModal');
+    }
   });
 
   // Auth tabs
@@ -1375,8 +1529,10 @@ function init() {
   bindEvents();
 
   // Render initial content
+  applyAuthUI();
   renderMovies();
   renderSeries();
+  renderFavoritesSection();
   initScrollReveal();
   initDemoChat();
 
@@ -1393,3 +1549,62 @@ function init() {
 
 // Start the app when DOM is ready
 document.addEventListener('DOMContentLoaded', init);
+
+/* ============================================================
+   AUTH OVERRIDE (real API)
+   ============================================================ */
+async function handleAuthSubmit(e) {
+  e.preventDefault();
+  if (!validateAuthForm()) return;
+
+  const currentMode = authMode;
+  const email = document.getElementById('authEmail').value.trim();
+  const password = document.getElementById('authPassword').value;
+  const name = document.getElementById('authName').value.trim();
+  const msg = document.getElementById('authMsg');
+  const btn = document.getElementById('authSubmit');
+
+  btn.textContent = 'Loading...';
+  btn.disabled = true;
+
+  try {
+    const endpoint = `${AUTH_API_BASE}/${currentMode === 'login' ? 'login' : 'register'}`;
+    const payload = currentMode === 'login'
+      ? { email, password }
+      : { name, email, password };
+
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || !data.success || !data.token || !data.user) {
+      throw new Error(data.message || `Auth failed: ${res.status}`);
+    }
+
+    setAuthSession(data.user, data.token);
+    state.favorites = loadFavorites();
+    applyAuthUI();
+    renderMovies();
+    renderSeries();
+    renderFavoritesSection();
+
+    msg.textContent = currentMode === 'login' ? 'Success login' : 'Account created';
+    msg.style.color = '#00d4ff';
+
+    setTimeout(() => {
+      closeModal('authModal');
+      showToast(currentMode === 'login' ? 'Welcome back' : 'Registration complete');
+      document.getElementById('authForm')?.reset();
+      switchAuthMode('login');
+    }, 700);
+  } catch (error) {
+    msg.textContent = error.message || 'Request failed';
+    msg.style.color = '#e94560';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = currentMode === 'register' ? 'Register' : 'Login';
+  }
+}

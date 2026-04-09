@@ -30,6 +30,7 @@
         <ul class="nav__list">
           <li class="nav__item"><a href="#movies" class="nav__link">Фильмы</a></li>
           <li class="nav__item"><a href="#series" class="nav__link">Сериалы</a></li>
+          <li class="nav__item"><a href="#favorites" class="nav__link">Favorites</a></li>
           <li class="nav__item"><a href="#mood" class="nav__link">По настроению</a></li>
           <li class="nav__item"><a href="#ai-section" class="nav__link nav__link--ai">AI Помощник</a></li>
         </ul>
@@ -38,6 +39,8 @@
       <div class="header__actions">
         <button class="btn btn--ghost btn--sm" id="btnLogin">Войти</button>
         <button class="btn btn--primary btn--sm" id="btnRegister">Регистрация</button>
+        <a class="btn btn--ghost btn--sm is-hidden" id="btnProfile" href="profile.html">Profile</a>
+        <button class="btn btn--ghost btn--sm is-hidden" id="btnLogout">Logout</button>
         <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Светлая/Тёмная тема">🌙</button>
         <button class="btn btn--ai" id="btnOpenAI" aria-label="Открыть AI-ассистент">
           <span class="ai-pulse"></span>
@@ -62,6 +65,9 @@
       <p class="hero__subtitle">Умный стриминг, который подбирает фильмы под твоё настроение, а не под алгоритм.</p>
       <div class="hero__cta">
         <button class="btn btn--primary btn--lg" id="heroWatchBtn">Смотреть сейчас</button>
+        <button class="btn btn--random btn--lg" id="heroRandomBtn">
+          <span class="btn__icon">&#127922;</span> Случайный фильм
+        </button>
         <button class="btn btn--outline btn--lg" id="heroAiBtn">
           <span class="btn__icon">◈</span> Спросить AI
         </button>
@@ -184,7 +190,20 @@
       </div>
     </div>
   </section>
-
+  <!-- FAVORITES SECTION -->
+  <section class="section favorites-section" id="favorites">
+    <div class="container">
+      <div class="section__header">
+        <div class="section__tag">Your list</div>
+        <h2 class="section__title">Favorites</h2>
+      </div>
+      <div class="movies-grid" id="favoritesGrid" role="list"></div>
+      <div class="empty-state" id="favoritesEmpty" style="display:none;">
+        <div class="empty-state__icon">♡</div>
+        <p>No favorites yet</p>
+      </div>
+    </div>
+  </section>
   <!-- AI SECTION -->
   <section class="section ai-section" id="ai-section">
     <div class="container">
