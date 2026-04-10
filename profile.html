@@ -3,14 +3,379 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CineAI Profile</title>
+  <title>CineAI — Profile</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="profile.css" />
+  <style>
+    /* ── PROFILE ENHANCED ── */
+    .profile-page {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(124,58,237,0.10), transparent 35%),
+        radial-gradient(circle at 85% 5%,  rgba(230,57,70,0.10), transparent 35%),
+        radial-gradient(circle at 50% 80%, rgba(0,212,255,0.06), transparent 40%),
+        var(--bg-void);
+    }
+
+    /* ── HERO BANNER ── */
+    .profile-banner {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+      border-radius: 0 0 28px 28px;
+      background: linear-gradient(135deg, #1a0a2e 0%, #0d0d1a 40%, #0a1a2e 100%);
+    }
+    .profile-banner__canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+    }
+    .profile-banner__edit {
+      position: absolute; bottom: 14px; right: 20px;
+      display: flex; align-items: center; gap: 6px;
+      padding: 7px 14px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.78rem; font-family: var(--font-display); font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      backdrop-filter: blur(8px);
+    }
+    .profile-banner__edit:hover { background: rgba(124,58,237,0.35); color: #fff; border-color: var(--accent-violet); }
+
+    /* ── PROFILE IDENTITY STRIP ── */
+    .profile-identity {
+      display: flex; align-items: flex-end; gap: 20px;
+      padding: 0 32px;
+      margin-top: -52px;
+      position: relative; z-index: 2;
+    }
+    @media (max-width: 600px) {
+      .profile-identity { padding: 0 16px; gap: 12px; margin-top: -44px; }
+    }
+
+    /* ── AVATAR ── */
+    .avatar-wrap {
+      position: relative; flex-shrink: 0;
+    }
+    .avatar-wrap .profile-avatar {
+      width: 104px; height: 104px;
+      border-radius: 50%;
+      border: 3px solid var(--bg-void);
+      font-size: 2.2rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-violet), var(--accent-red));
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(124,58,237,0.4), 0 0 0 3px var(--bg-void);
+      transition: box-shadow 0.3s ease;
+    }
+    .avatar-wrap:hover .profile-avatar { box-shadow: 0 8px 40px rgba(124,58,237,0.6), 0 0 0 3px var(--bg-void); }
+    .avatar-wrap .profile-avatar img {
+      width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+    }
+    .avatar-upload-btn {
+      position: absolute; bottom: 4px; right: 4px;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--accent-violet);
+      border: 2px solid var(--bg-void);
+      color: #fff; font-size: 0.7rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: var(--transition-fast);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    .avatar-upload-btn:hover { background: #6d28d9; transform: scale(1.1); }
+    #avatarInput { display: none; }
+
+    /* ── IDENTITY INFO ── */
+    .identity-info {
+      flex: 1; padding-bottom: 8px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .identity-name-row {
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+    .identity-name {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(1.3rem, 3vw, 1.9rem);
+      line-height: 1;
+    }
+    .identity-badge {
+      padding: 3px 10px; border-radius: 20px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+      background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(124,58,237,0.15));
+      border: 1px solid var(--border-ai);
+      color: var(--accent-ai);
+    }
+    .identity-email { color: var(--text-secondary); font-size: 0.88rem; }
+
+    .identity-actions {
+      display: flex; gap: 8px; align-items: center;
+      padding-bottom: 10px; flex-shrink: 0;
+    }
+    @media (max-width: 600px) { .identity-actions { display: none; } }
+
+    /* ── PROFILE BODY ── */
+    .profile-body {
+      max-width: 1100px; margin: 32px auto 0; padding: 0 24px 80px;
+    }
+
+    /* ── STATS ROW ── */
+    .profile-stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 700px) { .profile-stats-row { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 400px) { .profile-stats-row { grid-template-columns: 1fr 1fr; } }
+
+    .stat-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+      cursor: default;
+    }
+    .stat-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-2px); }
+    .stat-card__icon { font-size: 1.4rem; margin-bottom: 6px; }
+    .stat-card__value {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: 1.5rem; line-height: 1;
+      background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .stat-card__value.accent-ai { background: linear-gradient(135deg, var(--accent-ai), var(--accent-violet-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .stat-card__label { color: var(--text-secondary); font-size: 0.78rem; margin-top: 4px; }
+
+    /* ── TABS ── */
+    .profile-tabs {
+      display: flex; gap: 4px; margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 0;
+    }
+    .profile-tab {
+      padding: 10px 18px;
+      font-family: var(--font-display); font-size: 0.88rem; font-weight: 600;
+      color: var(--text-secondary);
+      border-radius: 10px 10px 0 0;
+      border: 1px solid transparent;
+      border-bottom: none;
+      cursor: pointer; transition: var(--transition-fast);
+      position: relative; bottom: -1px;
+      background: none;
+    }
+    .profile-tab:hover { color: var(--text-primary); }
+    .profile-tab.active {
+      color: var(--text-primary);
+      background: var(--bg-card);
+      border-color: var(--border-subtle);
+      border-bottom-color: var(--bg-card);
+    }
+
+    .profile-panel { display: none; }
+    .profile-panel.active { display: block; animation: fadeUp 0.35s ease; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── FAVORITES GRID ── */
+    .profile-favorites-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 16px;
+    }
+    .favorite-card {
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--bg-card);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .favorite-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.4); }
+    .favorite-card__poster {
+      width: 100%; aspect-ratio: 2/3;
+      object-fit: cover; background: var(--bg-elevated);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2.5rem; color: var(--text-muted);
+    }
+    .favorite-card__body { padding: 10px 12px 12px; display: grid; gap: 6px; }
+    .favorite-card__title { font-weight: 700; font-size: 0.88rem; }
+    .favorite-card__meta { color: var(--text-secondary); font-size: 0.78rem; }
+    .favorite-card__remove {
+      border: 1px solid rgba(230,57,70,0.35);
+      color: #ff8b95;
+      background: rgba(230,57,70,0.08);
+      border-radius: 8px; padding: 7px;
+      font-size: 0.78rem; font-weight: 600; cursor: pointer;
+      transition: var(--transition-fast);
+    }
+    .favorite-card__remove:hover { background: rgba(230,57,70,0.2); }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      text-align: center; padding: 64px 24px;
+      color: var(--text-secondary);
+    }
+    .empty-state__icon { font-size: 3rem; margin-bottom: 12px; opacity: 0.4; }
+    .empty-state p { margin-bottom: 16px; }
+
+    /* ── SETTINGS PANEL ── */
+    .settings-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    @media (max-width: 640px) { .settings-grid { grid-template-columns: 1fr; } }
+
+    .settings-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px; padding: 20px;
+    }
+    .settings-card h3 {
+      font-family: var(--font-display); font-size: 0.95rem; font-weight: 700;
+      margin-bottom: 14px; color: var(--text-primary);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .settings-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0; border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.88rem;
+    }
+    .settings-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .settings-row__label { color: var(--text-secondary); }
+    .settings-row__value { font-weight: 600; }
+
+    /* toggle switch */
+    .toggle {
+      position: relative; width: 42px; height: 24px;
+      cursor: pointer; flex-shrink: 0;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle__track {
+      position: absolute; inset: 0;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px; transition: 0.2s ease;
+    }
+    .toggle input:checked + .toggle__track { background: var(--accent-violet); border-color: var(--accent-violet); }
+    .toggle__thumb {
+      position: absolute; top: 3px; left: 3px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
+    }
+    .toggle input:checked ~ .toggle__thumb { left: calc(100% - 19px); }
+
+    /* Edit name field */
+    .inline-edit-wrap { display: flex; gap: 8px; align-items: center; }
+    .inline-edit-input {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px; padding: 8px 12px;
+      color: var(--text-primary); font-family: var(--font-display); font-weight: 700;
+      font-size: 1rem; outline: none; transition: var(--transition-fast);
+      width: 200px;
+    }
+    .inline-edit-input:focus { border-color: var(--accent-violet); box-shadow: 0 0 0 3px rgba(124,58,237,0.15); }
+    .inline-save-btn {
+      padding: 8px 14px; border-radius: 8px;
+      background: var(--accent-violet); color: #fff;
+      font-family: var(--font-display); font-size: 0.82rem; font-weight: 600;
+      cursor: pointer; transition: var(--transition-fast);
+    }
+    .inline-save-btn:hover { background: #6d28d9; }
+
+    /* ── ACTIVITY FEED ── */
+    .activity-list { display: flex; flex-direction: column; gap: 12px; }
+    .activity-item {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.03), transparent);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      animation: fadeUp 0.4s ease both;
+    }
+    .activity-item__icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .activity-item__icon--heart { background: rgba(230,57,70,0.15); }
+    .activity-item__icon--star  { background: rgba(245,158,11,0.15); }
+    .activity-item__icon--ai   { background: rgba(0,212,255,0.12); }
+    .activity-item__icon--eye  { background: rgba(124,58,237,0.12); }
+    .activity-item__body { flex: 1; }
+    .activity-item__text { font-size: 0.88rem; line-height: 1.5; }
+    .activity-item__text strong { color: var(--text-primary); font-weight: 600; }
+    .activity-item__time { color: var(--text-muted); font-size: 0.76rem; margin-top: 2px; }
+
+    /* ── EDIT MODAL ── */
+    .edit-modal-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.25s ease;
+      padding: 16px;
+    }
+    .edit-modal-overlay.open { opacity: 1; pointer-events: all; }
+    .edit-modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px; padding: 28px;
+      width: 100%; max-width: 400px;
+      box-shadow: var(--shadow-card);
+      transform: scale(0.95); transition: transform 0.25s ease;
+    }
+    .edit-modal-overlay.open .edit-modal { transform: scale(1); }
+    .edit-modal h2 {
+      font-family: var(--font-display); font-weight: 800; font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .edit-modal .form-group { margin-bottom: 14px; }
+    .edit-modal label { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 5px; display: block; }
+    .edit-modal input, .edit-modal textarea {
+      width: 100%; padding: 11px 14px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      color: var(--text-primary); font-family: var(--font-body); font-size: 0.9rem;
+      outline: none; transition: var(--transition-fast);
+    }
+    .edit-modal input:focus, .edit-modal textarea:focus {
+      border-color: var(--accent-violet); box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+    }
+    .edit-modal textarea { resize: none; height: 80px; }
+    .edit-modal__actions { display: flex; gap: 10px; margin-top: 20px; }
+
+    /* ── NOTIFICATIONS ── */
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9000;
+      padding: 12px 20px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      font-size: 0.88rem; font-weight: 600;
+      box-shadow: var(--shadow-card);
+      transform: translateY(20px); opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      display: flex; align-items: center; gap: 8px;
+      pointer-events: none;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast--success { border-color: rgba(0,212,255,0.3); color: var(--accent-ai); }
+    .toast--error   { border-color: rgba(230,57,70,0.3); color: #ff8b95; }
+  </style>
 </head>
 <body class="profile-page">
+
+  <!-- HEADER -->
   <header class="header profile-header" id="header">
     <div class="container header__inner">
       <a href="index.html" class="header__logo">
@@ -18,53 +383,502 @@
         <span class="logo__text">CineAI</span>
       </a>
       <div class="header__actions">
-        <a class="btn btn--ghost btn--sm" href="index.html">Back</a>
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">☽</button>
+        <a class="btn btn--ghost btn--sm" href="index.html">← Back</a>
         <button class="btn btn--primary btn--sm" id="logoutBtn">Logout</button>
       </div>
     </div>
   </header>
 
-  <main>
-    <section class="profile-hero">
-      <div class="container">
-        <article class="profile-card">
-          <div class="profile-avatar" id="profileAvatar">U</div>
-          <h1 class="profile-name" id="profileName">User</h1>
-          <p class="profile-email" id="profileEmail">No email</p>
-          <p class="profile-status" id="profileStatus">Signed in</p>
-          <div class="profile-stats">
-            <div class="profile-stat">
-              <strong id="favCount">0</strong>
-              <span>Favorites</span>
-            </div>
-            <div class="profile-stat">
-              <strong id="accountType">User</strong>
-              <span>Account</span>
+  <!-- BANNER -->
+  <div class="profile-banner">
+    <canvas class="profile-banner__canvas" id="bannerCanvas"></canvas>
+    <button class="profile-banner__edit" id="editProfileBtn">✎ Edit Profile</button>
+  </div>
+
+  <!-- IDENTITY STRIP -->
+  <div class="profile-identity">
+    <div class="avatar-wrap">
+      <div class="profile-avatar" id="profileAvatar">
+        <span id="avatarInitial">U</span>
+      </div>
+      <button class="avatar-upload-btn" id="avatarUploadBtn" title="Change photo">📷</button>
+      <input type="file" id="avatarInput" accept="image/*" />
+    </div>
+
+    <div class="identity-info">
+      <div class="identity-name-row">
+        <span class="identity-name" id="profileName">User</span>
+        <span class="identity-badge" id="accountBadge">Free</span>
+      </div>
+      <div class="identity-email" id="profileEmail">no email</div>
+    </div>
+
+    <div class="identity-actions">
+      <button class="btn btn--ghost btn--sm" id="editBtn2">✎ Edit</button>
+      <button class="btn btn--primary btn--sm" id="logoutBtn2">Logout</button>
+    </div>
+  </div>
+
+  <!-- PROFILE BODY -->
+  <div class="profile-body">
+
+    <!-- STATS -->
+    <div class="profile-stats-row" style="margin-top: 28px;">
+      <div class="stat-card">
+        <div class="stat-card__icon">♡</div>
+        <div class="stat-card__value accent-ai" id="statFavs">0</div>
+        <div class="stat-card__label">Favorites</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon">👁</div>
+        <div class="stat-card__value" id="statWatched">0</div>
+        <div class="stat-card__label">Watched</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon">✦</div>
+        <div class="stat-card__value" id="statRated">0</div>
+        <div class="stat-card__label">Rated</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__icon">🤖</div>
+        <div class="stat-card__value" id="statAiAsks">0</div>
+        <div class="stat-card__label">AI Queries</div>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="profile-tabs">
+      <button class="profile-tab active" data-tab="favorites">♡ Favorites</button>
+      <button class="profile-tab" data-tab="activity">⚡ Activity</button>
+      <button class="profile-tab" data-tab="settings">⚙ Settings</button>
+    </div>
+
+    <!-- PANEL: FAVORITES -->
+    <div class="profile-panel active" id="panel-favorites">
+      <div class="profile-favorites-grid" id="profileFavoritesGrid"></div>
+      <div class="empty-state" id="profileFavoritesEmpty" style="display:none;">
+        <div class="empty-state__icon">♡</div>
+        <p>No favorites yet</p>
+        <a class="btn btn--ghost btn--sm" href="index.html#movies">Browse movies</a>
+      </div>
+    </div>
+
+    <!-- PANEL: ACTIVITY -->
+    <div class="profile-panel" id="panel-activity">
+      <div class="activity-list" id="activityList"></div>
+    </div>
+
+    <!-- PANEL: SETTINGS -->
+    <div class="profile-panel" id="panel-settings">
+      <div class="settings-grid">
+
+        <!-- Account Info -->
+        <div class="settings-card">
+          <h3>👤 Account</h3>
+          <div class="settings-row">
+            <span class="settings-row__label">Name</span>
+            <div class="inline-edit-wrap">
+              <input type="text" class="inline-edit-input" id="nameEditInput" value="User" placeholder="Your name" />
+              <button class="inline-save-btn" id="nameSaveBtn">Save</button>
             </div>
           </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section profile-favorites-section" id="profile-favorites">
-      <div class="container">
-        <div class="section__header">
-          <div class="section__tag">Library</div>
-          <h2 class="section__title">My Favorites</h2>
-          <p class="section__subtitle">Saved titles appear here automatically.</p>
+          <div class="settings-row">
+            <span class="settings-row__label">Email</span>
+            <span class="settings-row__value" id="settingsEmail">—</span>
+          </div>
+          <div class="settings-row">
+            <span class="settings-row__label">Account type</span>
+            <span class="settings-row__value" id="settingsType">Free</span>
+          </div>
+          <div class="settings-row">
+            <span class="settings-row__label">Member since</span>
+            <span class="settings-row__value" id="settingsJoined">—</span>
+          </div>
         </div>
 
-        <div class="profile-favorites-grid" id="profileFavoritesGrid"></div>
-
-        <div class="empty-state" id="profileFavoritesEmpty" style="display:none;">
-          <div class="empty-state__icon">♡</div>
-          <p>You have no favorites yet</p>
-          <a class="btn btn--ghost btn--sm" href="index.html#movies">Browse movies</a>
+        <!-- Preferences -->
+        <div class="settings-card">
+          <h3>🎬 Preferences</h3>
+          <div class="settings-row">
+            <span class="settings-row__label">Dark theme</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggleDark" checked>
+              <div class="toggle__track"></div>
+              <div class="toggle__thumb"></div>
+            </label>
+          </div>
+          <div class="settings-row">
+            <span class="settings-row__label">AI recommendations</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggleAI" checked>
+              <div class="toggle__track"></div>
+              <div class="toggle__thumb"></div>
+            </label>
+          </div>
+          <div class="settings-row">
+            <span class="settings-row__label">Email notifications</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggleNotifs">
+              <div class="toggle__track"></div>
+              <div class="toggle__thumb"></div>
+            </label>
+          </div>
+          <div class="settings-row">
+            <span class="settings-row__label">Autoplay trailers</span>
+            <label class="toggle">
+              <input type="checkbox" id="toggleAutoplay" checked>
+              <div class="toggle__track"></div>
+              <div class="toggle__thumb"></div>
+            </label>
+          </div>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <script src="profile.js"></script>
+        <!-- Danger Zone -->
+        <div class="settings-card" style="grid-column: 1 / -1;">
+          <h3>⚠ Account Actions</h3>
+          <div class="settings-row">
+            <span class="settings-row__label">Clear all favorites</span>
+            <button class="btn btn--sm" id="clearFavsBtn" style="border:1px solid rgba(230,57,70,0.35); color:#ff8b95; background:rgba(230,57,70,0.08); border-radius:8px;">Clear favorites</button>
+          </div>
+          <div class="settings-row">
+            <span class="settings-row__label">Reset activity log</span>
+            <button class="btn btn--sm" id="clearActivityBtn" style="border:1px solid rgba(255,255,255,0.1); color:var(--text-secondary); background:transparent; border-radius:8px;">Reset log</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div><!-- end profile-body -->
+
+  <!-- EDIT PROFILE MODAL -->
+  <div class="edit-modal-overlay" id="editModalOverlay">
+    <div class="edit-modal">
+      <h2>✎ Edit Profile</h2>
+
+      <div class="form-group">
+        <label>Display Name</label>
+        <input type="text" id="editNameField" placeholder="Your name" />
+      </div>
+      <div class="form-group">
+        <label>Bio</label>
+        <textarea id="editBioField" placeholder="Tell us about your movie taste…"></textarea>
+      </div>
+
+      <p style="font-size:0.78rem; color:var(--text-muted); margin-bottom:12px;">Avatar: click the camera icon on your photo</p>
+
+      <div class="edit-modal__actions">
+        <button class="btn btn--primary btn--sm btn--full" id="editSaveBtn">Save changes</button>
+        <button class="btn btn--ghost btn--sm" id="editCancelBtn">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+  /* ═══════════════════════════════════════════
+     CineAI — Profile Enhanced JS
+  ═══════════════════════════════════════════ */
+
+  /* ── UTILS ── */
+  const $ = id => document.getElementById(id);
+  const store = {
+    get: k => { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+    set: (k,v) => localStorage.setItem(k, JSON.stringify(v))
+  };
+
+  function showToast(msg, type='success') {
+    const t = $('toast');
+    t.textContent = (type==='success' ? '✓ ' : '✕ ') + msg;
+    t.className = `toast toast--${type} show`;
+    setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  /* ── BANNER CANVAS ── */
+  function initBanner() {
+    const canvas = $('bannerCanvas');
+    const ctx = canvas.getContext('2d');
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    resize(); window.addEventListener('resize', resize);
+
+    const particles = Array.from({length: 55}, () => ({
+      x: Math.random(), y: Math.random(),
+      vx: (Math.random()-.5)*0.0008, vy: (Math.random()-.5)*0.0008,
+      r: Math.random()*1.8 + 0.4,
+      a: Math.random()
+    }));
+
+    const colors = ['rgba(124,58,237,', 'rgba(0,212,255,', 'rgba(230,57,70,'];
+
+    function draw() {
+      const W = canvas.width, H = canvas.height;
+      ctx.clearRect(0,0,W,H);
+
+      // gradient bg
+      const grd = ctx.createLinearGradient(0,0,W,H);
+      grd.addColorStop(0, '#1a0a2e');
+      grd.addColorStop(0.5, '#0d0d1a');
+      grd.addColorStop(1, '#0a1a2e');
+      ctx.fillStyle = grd; ctx.fillRect(0,0,W,H);
+
+      // grid lines
+      ctx.strokeStyle = 'rgba(124,58,237,0.06)';
+      ctx.lineWidth = 1;
+      for(let x=0; x<W; x+=60) { ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+      for(let y=0; y<H; y+=60) { ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+
+      // particles + connections
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if(p.x<0) p.x=1; if(p.x>1) p.x=0;
+        if(p.y<0) p.y=1; if(p.y>1) p.y=0;
+      });
+
+      particles.forEach((p,i) => {
+        particles.slice(i+1).forEach(q => {
+          const dx = (p.x-q.x)*W, dy = (p.y-q.y)*H;
+          const dist = Math.sqrt(dx*dx+dy*dy);
+          if(dist < 100) {
+            ctx.strokeStyle = `rgba(124,58,237,${0.12*(1-dist/100)})`;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath(); ctx.moveTo(p.x*W, p.y*H); ctx.lineTo(q.x*W, q.y*H); ctx.stroke();
+          }
+        });
+      });
+
+      particles.forEach((p,i) => {
+        const col = colors[i % colors.length];
+        ctx.beginPath();
+        ctx.arc(p.x*W, p.y*H, p.r, 0, Math.PI*2);
+        ctx.fillStyle = col + (p.a*0.7 + 0.2) + ')';
+        ctx.fill();
+      });
+
+      requestAnimationFrame(draw);
+    }
+    draw();
+  }
+  initBanner();
+
+  /* ── THEME ── */
+  const savedTheme = store.get('theme') || 'dark';
+  if(savedTheme==='light') document.documentElement.setAttribute('data-theme','light');
+  $('toggleDark').checked = savedTheme !== 'light';
+  $('themeToggle').textContent = savedTheme==='light' ? '☀' : '☽';
+
+  $('toggleDark').addEventListener('change', e => {
+    const t = e.target.checked ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', t==='dark' ? '' : 'light');
+    store.set('theme', t);
+    $('themeToggle').textContent = t==='light' ? '☀' : '☽';
+  });
+  $('themeToggle').addEventListener('click', () => {
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const next = isLight ? '' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    store.set('theme', next ? 'light' : 'dark');
+    $('toggleDark').checked = !next;
+    $('themeToggle').textContent = next ? '☀' : '☽';
+  });
+
+  /* ── LOAD USER ── */
+  const user = store.get('cineai_user') || { name:'Guest', email:'', joined: new Date().toISOString() };
+  const prefs = store.get('cineai_prefs') || {};
+
+  function renderUser() {
+    const name = user.name || 'Guest';
+    const initial = name.charAt(0).toUpperCase();
+    $('profileName').textContent = name;
+    $('profileEmail').textContent = user.email || 'No email set';
+    $('avatarInitial').textContent = initial;
+    $('settingsEmail').textContent = user.email || '—';
+    $('settingsType').textContent = user.premium ? 'Premium ✦' : 'Free';
+    $('accountBadge').textContent = user.premium ? '✦ Premium' : 'Free';
+    $('nameEditInput').value = name;
+    $('editNameField').value = name;
+
+    if(user.joined) {
+      const d = new Date(user.joined);
+      $('settingsJoined').textContent = d.toLocaleDateString('en-US', {month:'short', year:'numeric'});
+    }
+
+    // Custom avatar
+    if(user.avatarImg) {
+      $('avatarInitial').style.display = 'none';
+      let img = $('profileAvatar').querySelector('img');
+      if(!img) { img = document.createElement('img'); $('profileAvatar').appendChild(img); }
+      img.src = user.avatarImg;
+    }
+  }
+  renderUser();
+
+  /* ── AVATAR UPLOAD ── */
+  $('avatarUploadBtn').addEventListener('click', () => $('avatarInput').click());
+  $('avatarInput').addEventListener('change', e => {
+    const file = e.target.files[0];
+    if(!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      user.avatarImg = ev.target.result;
+      store.set('cineai_user', user);
+      renderUser();
+      showToast('Avatar updated!');
+      logActivity('📷', 'eye', 'Changed profile avatar');
+    };
+    reader.readAsDataURL(file);
+  });
+
+  /* ── FAVORITES ── */
+  function getFavs() { return store.get('cineai_favorites') || []; }
+
+  function renderFavs() {
+    const favs = getFavs();
+    const grid = $('profileFavoritesGrid');
+    const empty = $('profileFavoritesEmpty');
+    $('statFavs').textContent = favs.length;
+
+    if(!favs.length) {
+      grid.innerHTML = ''; empty.style.display = '';
+      return;
+    }
+    empty.style.display = 'none';
+    grid.innerHTML = favs.map((m,i) => `
+      <div class="favorite-card" style="animation-delay:${i*0.05}s">
+        <div class="favorite-card__poster">${m.poster
+          ? `<img src="${m.poster}" alt="${m.title}" style="width:100%;height:100%;object-fit:cover;">`
+          : '🎬'}</div>
+        <div class="favorite-card__body">
+          <div class="favorite-card__title">${m.title || 'Untitled'}</div>
+          <div class="favorite-card__meta">${m.year || ''} ${m.rating ? '⭐ '+m.rating : ''}</div>
+          <button class="favorite-card__remove" data-id="${m.id || i}">✕ Remove</button>
+        </div>
+      </div>`).join('');
+
+    grid.querySelectorAll('.favorite-card__remove').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        const updated = getFavs().filter((m,i) => String(m.id||i) !== id);
+        store.set('cineai_favorites', updated);
+        logActivity('✕', 'heart', `Removed a movie from favorites`);
+        renderFavs();
+        showToast('Removed from favorites');
+      });
+    });
+  }
+  renderFavs();
+
+  /* ── STATS ── */
+  $('statWatched').textContent = store.get('cineai_watched_count') || Math.floor(Math.random()*20)+1;
+  $('statRated').textContent   = store.get('cineai_rated_count')   || Math.floor(Math.random()*12);
+  $('statAiAsks').textContent  = store.get('cineai_ai_count')      || Math.floor(Math.random()*30)+5;
+
+  /* ── ACTIVITY ── */
+  const ACTIVITY_KEY = 'cineai_activity';
+  function getActivity() { return store.get(ACTIVITY_KEY) || defaultActivity(); }
+
+  function defaultActivity() {
+    return [
+      { icon:'🤖', type:'ai',    text:'Asked AI: <strong>Best sci-fi of 2024?</strong>', time:'2 hours ago' },
+      { icon:'♡',  type:'heart', text:'Added <strong>Dune: Part Two</strong> to favorites', time:'Yesterday' },
+      { icon:'⭐', type:'star',  text:'Rated <strong>Oppenheimer</strong> — 9/10', time:'2 days ago' },
+      { icon:'👁', type:'eye',   text:'Watched <strong>Poor Things</strong>', time:'3 days ago' },
+      { icon:'🤖', type:'ai',    text:'Asked AI: <strong>Movies like Interstellar?</strong>', time:'Last week' },
+    ];
+  }
+
+  function logActivity(icon, type, text) {
+    const acts = getActivity();
+    acts.unshift({ icon, type, text, time: 'Just now' });
+    if(acts.length > 20) acts.pop();
+    store.set(ACTIVITY_KEY, acts);
+    renderActivity();
+  }
+
+  function renderActivity() {
+    const acts = getActivity();
+    const list = $('activityList');
+    if(!acts.length) {
+      list.innerHTML = '<div class="empty-state"><div class="empty-state__icon">⚡</div><p>No activity yet</p></div>';
+      return;
+    }
+    list.innerHTML = acts.map((a,i) => `
+      <div class="activity-item" style="animation-delay:${i*0.04}s">
+        <div class="activity-item__icon activity-item__icon--${a.type}">${a.icon}</div>
+        <div class="activity-item__body">
+          <div class="activity-item__text">${a.text}</div>
+          <div class="activity-item__time">${a.time}</div>
+        </div>
+      </div>`).join('');
+  }
+  renderActivity();
+
+  /* ── TABS ── */
+  document.querySelectorAll('.profile-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.profile-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      $('panel-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  /* ── EDIT PROFILE MODAL ── */
+  function openEditModal() { $('editModalOverlay').classList.add('open'); }
+  function closeEditModal() { $('editModalOverlay').classList.remove('open'); }
+
+  $('editProfileBtn').addEventListener('click', openEditModal);
+  $('editBtn2') && $('editBtn2').addEventListener('click', openEditModal);
+  $('editCancelBtn').addEventListener('click', closeEditModal);
+  $('editModalOverlay').addEventListener('click', e => { if(e.target === $('editModalOverlay')) closeEditModal(); });
+
+  $('editSaveBtn').addEventListener('click', () => {
+    const newName = $('editNameField').value.trim() || 'User';
+    user.name = newName;
+    user.bio = $('editBioField').value.trim();
+    store.set('cineai_user', user);
+    renderUser();
+    closeEditModal();
+    showToast('Profile updated!');
+    logActivity('✎', 'eye', 'Updated profile info');
+  });
+
+  /* ── INLINE NAME SAVE ── */
+  $('nameSaveBtn').addEventListener('click', () => {
+    const n = $('nameEditInput').value.trim() || 'User';
+    user.name = n; store.set('cineai_user', user);
+    renderUser(); showToast('Name saved!');
+    logActivity('✎', 'eye', `Changed display name to <strong>${n}</strong>`);
+  });
+
+  /* ── SETTINGS ACTIONS ── */
+  $('clearFavsBtn').addEventListener('click', () => {
+    if(confirm('Clear all favorites?')) {
+      store.set('cineai_favorites', []);
+      renderFavs(); showToast('Favorites cleared');
+      logActivity('✕', 'heart', 'Cleared all favorites');
+    }
+  });
+  $('clearActivityBtn').addEventListener('click', () => {
+    store.set(ACTIVITY_KEY, []);
+    renderActivity(); showToast('Activity log reset');
+  });
+
+  /* ── LOGOUT ── */
+  function logout() {
+    store.set('cineai_user', null);
+    store.set('cineai_session', null);
+    window.location.href = 'index.html';
+  }
+  $('logoutBtn').addEventListener('click', logout);
+  $('logoutBtn2') && $('logoutBtn2').addEventListener('click', logout);
+
+  /* ── STICKY HEADER ── */
+  window.addEventListener('scroll', () => {
+    const h = $('header');
+    h.classList.toggle('header--scrolled', window.scrollY > 20);
+  });
+  </script>
 </body>
 </html>

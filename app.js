@@ -1,4 +1,4 @@
-/**
+﻿/**
  * CineAI — Main Application JavaScript
  * Clean vanilla JS, architecture ready for backend API integration
  */
@@ -129,56 +129,56 @@ const MOVIES_DATA = [
     rating: 7.9, mood: ['fun', 'motivating', 'tense'],
     year: 2008, duration: '126 мин',
     description: 'Миллиардер Тони Старк создаёт бронированный костюм и становится супергероем. Фильм, с которого началась вселенная Marvel.',
-    poster: 'posters/17.jpg', trailer: '8ugaeA-nMTc', streamUrl: 'https://www.kinopoisk.ru/film/258687/', director: 'Джон Фавро',
+    poster: 'posters/17.jpg', trailer: '8ugaeA-nMTc', streamUrl: 'https://fbsite.top/film/61237/', director: 'Джон Фавро',
   },
   {
     id: 18, type: 'movie', title: 'Чёрная пантера', genre: 'Супергерои',
     rating: 7.3, mood: ['fun', 'motivating', 'tense'],
     year: 2018, duration: '134 мин',
     description: 'Принц Ваканды возвращается на родину после гибели отца и вступает в схватку за трон. Один из самых культурно значимых фильмов Marvel.',
-    poster: 'posters/18.jpg', trailer: 'xjDjIWPAgrU', streamUrl: 'https://www.kinopoisk.ru/film/917259/', director: 'Райан Куглер',
+    poster: 'posters/18.jpg', trailer: 'xjDjIWPAgrU', streamUrl: 'https://fbsite.top/film/623250/', director: 'Райан Куглер',
   },
   {
     id: 19, type: 'movie', title: 'Человек-паук: Нет пути домой', genre: 'Супергерои',
     rating: 8.3, mood: ['fun', 'tense', 'motivating'],
     year: 2021, duration: '148 мин',
     description: 'Питер Паркер просит доктора Стрэнджа стереть память о его личности — и открывает мультивселенную. Фанаты назвали этот фильм лучшим за годы.',
-    poster: 'posters/19.jpg', trailer: 'JfVOs4VSpmA', streamUrl: 'https://www.kinopoisk.ru/film/1221070/', director: 'Джон Уоттс',
+    poster: 'posters/19.jpg', trailer: 'JfVOs4VSpmA', streamUrl: 'https://fbsite.top/film/1309570/', director: 'Джон Уоттс',
   },
   {
     id: 20, type: 'movie', title: 'Тёмный рыцарь', genre: 'Супергерои',
     rating: 9.0, mood: ['dark', 'tense', 'motivating'],
     year: 2008, duration: '152 мин',
     description: 'Бэтмен противостоит Джокеру — хаотичному злодею, сеющему анархию в Готэме. Лучший супергеройский фильм всех времён по версии большинства рейтингов.',
-    poster: 'posters/20.jpg', trailer: 'EXeTwQWrcwY', streamUrl: 'https://www.kinopoisk.ru/film/404900/', director: 'Кристофер Нолан',
+    poster: 'posters/20.jpg', trailer: 'EXeTwQWrcwY', streamUrl: 'https://fbsite.top/film/111543/', director: 'Кристофер Нолан',
   },
   {
     id: 21, type: 'movie', title: 'Побег из Шоушенка', genre: 'Драма',
     rating: 9.3, mood: ['motivating', 'dark', 'cozy'],
     year: 1994, duration: '142 мин',
     description: 'Банкир, осуждённый за убийство жены, находит смысл жизни в тюрьме и дружбу с матёрым заключённым. Один из лучших фильмов в истории кино.',
-    poster: 'posters/21.jpg', trailer: 'PLl99DlL6b4', streamUrl: 'https://www.kinopoisk.ru/film/326/', director: 'Фрэнк Дарабонт',
+    poster: 'posters/21.jpg', trailer: 'PLl99DlL6b4', streamUrl: 'https://fbsite.top/film/326/', director: 'Фрэнк Дарабонт',
   },
   {
     id: 22, type: 'movie', title: 'Список Шиндлера', genre: 'История',
     rating: 9.0, mood: ['dark', 'motivating'],
     year: 1993, duration: '195 мин',
     description: 'Немецкий предприниматель спасает более тысячи польских евреев во время Холокоста. Монументальная работа Спилберга, снятая в чёрно-белом цвете.',
-    poster: 'posters/22.jpg', trailer: 'gG22XNhtnoY', streamUrl: 'https://www.kinopoisk.ru/film/329/', director: 'Стивен Спилберг',
+    poster: 'posters/22.jpg', trailer: 'gG22XNhtnoY', streamUrl: 'https://fbsite.top/film/329/', director: 'Стивен Спилберг',
   },
   {
     id: 23, type: 'movie', title: 'Форрест Гамп', genre: 'Драма',
     rating: 8.8, mood: ['cozy', 'motivating', 'romantic'],
     year: 1994, duration: '142 мин',
     description: 'История простодушного американца, случайно оказавшегося свидетелем ключевых событий XX века. Тёплый, трогательный и вдохновляющий.',
-    poster: 'posters/23.jpg', trailer: 'bLvqoHBptjg', streamUrl: 'https://www.kinopoisk.ru/film/361/', director: 'Роберт Земекис',
+    poster: 'posters/23.jpg', trailer: 'bLvqoHBptjg', streamUrl: 'https://fbsite.top/film/448/', director: 'Роберт Земекис',
   },
   {
     id: 24, type: 'movie', title: 'Матрица', genre: 'Фантастика',
     rating: 8.7, mood: ['tense', 'dark', 'motivating'],
     year: 1999, duration: '136 мин',
     description: 'Хакер узнаёт, что реальный мир — лишь симуляция, созданная машинами. Революционный фантастический боевик, изменивший кинематограф.',
-    poster: 'posters/24.jpg', trailer: 'm8e-FF8MsqU', streamUrl: 'https://www.kinopoisk.ru/film/301/', director: 'Вачовски',
+    poster: 'posters/24.jpg', trailer: 'm8e-FF8MsqU', streamUrl: 'https://fbsite.top/film/301/', director: 'Вачовски',
   },
   {
     id: 25, type: 'movie', title: 'Бойцовский клуб', genre: 'Триллер',
@@ -192,14 +192,14 @@ const MOVIES_DATA = [
     rating: 9.2, mood: ['dark', 'tense', 'cozy'],
     year: 1972, duration: '175 мин',
     description: 'Стареющий патриарх мафиозной династии передаёт власть сыну. Эпическая сага о власти, семье и чести — один из величайших фильмов всех времён.',
-    poster: 'posters/26.jpg', trailer: 'sY1S34973zA', director: 'Фрэнсис Форд Коппола',
+    poster: 'posters/26.jpg', trailer: 'sY1S34973zA', director: 'Фрэнсис Форд Коппола' , streamUrl:'https://fbsite.top/film/325/'
   },
   {
     id: 27, type: 'movie', title: 'Достать ножи 2', genre: 'Детектив',
     rating: 7.1, mood: ['fun', 'tense', 'cozy'],
     year: 2022, duration: '139 мин',
     description: 'Детектив Бенуа Блан расследует убийство на яхте технологического миллиардера. Остроумное продолжение с неожиданными поворотами.',
-    poster: 'posters/27.jpg', trailer: '8MqYpFkYMJo', director: 'Райан Джонсон',
+    poster: 'posters/27.jpg', trailer: '8MqYpFkYMJo', director: 'Райан Джонсон', streamUrl:'https://fbsite.top/film/1343908/'
   },
   /* ── СЕРИАЛЫ ── */
   {
@@ -207,56 +207,56 @@ const MOVIES_DATA = [
     rating: 8.8, mood: ['fun', 'cozy', 'motivating'],
     year: 2020, duration: '3 сезона',
     description: 'Американский тренер по американскому футболу возглавляет британский футбольный клуб, не имея опыта. Позитивная, душевная история о лидерстве и доброте.',
-    poster: 'posters/101.jpg', trailer: 'nDV7XdSXkm8', director: 'Apple TV+',
+    poster: 'posters/101.jpg', trailer: 'nDV7XdSXkm8', director: 'Apple TV+', streamUrl:'https://fbsite.top/series/1309707/'
   },
   {
     id: 102, type: 'series', title: 'Настоящий детектив', genre: 'Детектив',
     rating: 9.0, mood: ['dark', 'tense'],
     year: 2014, duration: '4 сезона',
     description: 'Два детектива расследуют серию жестоких убийств в Луизиане на протяжении 17 лет. Атмосферный психологический триллер.',
-    poster: 'posters/102.jpg', trailer: 'uK0mWJBCqFE', director: 'HBO',
+    poster: 'posters/102.jpg', trailer: 'uK0mWJBCqFE', director: 'HBO', streamUrl:'https://fbsite.top/series/681831/'
   },
   {
     id: 103, type: 'series', title: 'Белый лотос', genre: 'Драма',
     rating: 7.9, mood: ['dark', 'cozy', 'tense'],
     year: 2021, duration: '2 сезона',
     description: 'Сатирический антология-триллер о гостях и персонале роскошного курортного отеля. Острая социальная сатира с отличной атмосферой.',
-    poster: 'posters/103.jpg', trailer: 'pRmf0dJgBCE', director: 'HBO',
+    poster: 'posters/103.jpg', trailer: 'pRmf0dJgBCE', director: 'HBO', streamUrl:'https://fbsite.top/series/2000461/'
   },
   {
     id: 104, type: 'series', title: 'Очень странные дела', genre: 'Фантастика',
     rating: 8.7, mood: ['tense', 'cozy', 'fun'],
     year: 2016, duration: '4 сезона',
     description: 'В маленьком городке дети сталкиваются со сверхъестественными явлениями из параллельного мира. Ностальгическая смесь приключений и ужасов.',
-    poster: 'posters/104.jpg', trailer: 'b9EkMc79ZSU', streamUrl: 'https://www.kinopoisk.ru/series/689918/', director: 'Netflix',
+    poster: 'posters/104.jpg', trailer: 'b9EkMc79ZSU', streamUrl: 'https://fbsite.top/series/915196/', director: 'Netflix',
   },
   {
-    id: 105, type: 'series', title: 'Succession', genre: 'Драма',
+    id: 105, type: 'series', title: 'Наследники', genre: 'Драма',
     rating: 8.9, mood: ['dark', 'tense'],
     year: 2018, duration: '4 сезона',
     description: 'Борьба за власть внутри дисфункциональной семьи медиамагната. Умная, жестокая и захватывающая история о власти и деньгах.',
-    poster: 'posters/105.jpg', trailer: 'OzYxJV_rmE8', director: 'HBO',
+    poster: 'posters/105.jpg', trailer: 'OzYxJV_rmE8', director: 'HBO', streamUrl:'https://fbsite.top/series/986788/'
   },
   {
     id: 106, type: 'series', title: 'Чернобыль', genre: 'История',
     rating: 9.4, mood: ['dark', 'tense', 'motivating'],
     year: 2019, duration: '5 эпизодов',
     description: 'Минисериал о катастрофе на Чернобыльской АЭС в 1986 году. Тщательно воссозданная, леденящая история о лжи и героизме.',
-    poster: 'posters/106.jpg', trailer: 's9APLXM9Ei8', director: 'HBO/Sky',
+    poster: 'posters/106.jpg', trailer: 's9APLXM9Ei8', director: 'HBO/Sky', streamUrl:'https://fbsite.top/film/1249198/'
   },
   {
     id: 107, type: 'series', title: 'Гравити Фолс', genre: 'Анимация',
     rating: 8.9, mood: ['fun', 'cozy', 'tense'],
     year: 2012, duration: '2 сезона',
     description: 'Брат и сестра проводят лето у двоюродного деда в таинственном городке, полном паранормальных явлений.',
-    poster: 'posters/107.jpg', trailer: 'x9IaGLQdnmY', director: 'Disney',
+    poster: 'posters/107.jpg', trailer: 'x9IaGLQdnmY', director: 'Disney', streamUrl:'hhttps://fbsite.top/series/591929/'
   },
   {
     id: 108, type: 'series', title: 'Эйфория', genre: 'Драма',
     rating: 8.3, mood: ['dark', 'romantic'],
     year: 2019, duration: '2 сезона',
     description: 'Группа старшеклассников проживает истории о зависимости, идентичности и травме. Визуально завораживающая и эмоционально тяжёлая драма.',
-    poster: 'posters/108.jpg', trailer: 'GbYCVNKhUs4', director: 'HBO',
+    poster: 'posters/108.jpg', trailer: 'GbYCVNKhUs4', director: 'HBO', streamUrl:'https://fbsite.top/series/1178445/'
   },
   /* ── НОВЫЕ СЕРИАЛЫ ── */
   {
@@ -264,35 +264,35 @@ const MOVIES_DATA = [
     rating: 9.2, mood: ['dark', 'tense', 'motivating'],
     year: 2011, duration: '8 сезонов',
     description: 'Несколько могущественных семей борются за Железный трон в мире магии и драконов. Масштабная эпопея, изменившая стандарты телевизионного производства.',
-    poster: 'posters/109.jpg', trailer: 'bjqg_aIHb4k', director: 'HBO',
+    poster: 'posters/109.jpg', trailer: 'bjqg_aIHb4k', director: 'HBO', streamUrl:'https://fbsite.top/series/464963/'
   },
   {
     id: 110, type: 'series', title: 'Во все тяжкие', genre: 'Криминал',
     rating: 9.5, mood: ['dark', 'tense'],
     year: 2008, duration: '5 сезонов',
     description: 'Учитель химии, узнав о раке, начинает варить метамфетамин. Одна из лучших телевизионных историй о трансформации человека — от жертвы к злодею.',
-    poster: 'posters/110.jpg', trailer: 'HhesaQXLuRY', director: 'AMC',
+    poster: 'posters/110.jpg', trailer: 'HhesaQXLuRY', director: 'AMC', streamUrl:'https://fbsite.top/series/404900/'
   },
   {
     id: 111, type: 'series', title: 'Чёрное зеркало', genre: 'Фантастика',
     rating: 8.8, mood: ['dark', 'tense'],
     year: 2011, duration: '6 сезонов',
     description: 'Антология историй о тёмных сторонах технологий и современного общества. Каждая серия — отдельная история, от сатирической до жуткой.',
-    poster: 'posters/111.jpg', trailer: 'jDiYGjqJkOY', director: 'Netflix',
+    poster: 'posters/111.jpg', trailer: 'jDiYGjqJkOY', director: 'Netflix', streamUrl:'https://fbsite.top/series/655800/'
   },
   {
     id: 112, type: 'series', title: 'Ход королевы', genre: 'Драма',
     rating: 8.6, mood: ['motivating', 'dark', 'cozy'],
     year: 2020, duration: '7 эпизодов',
     description: 'Девочка-сирота становится гениальной шахматисткой и борется с зависимостью на пути к чемпионству. Захватывающий и красивый минисериал Netflix.',
-    poster: 'posters/112.jpg', trailer: 'oZbQSdDlgBE', director: 'Netflix',
+    poster: 'posters/112.jpg', trailer: 'oZbQSdDlgBE', director: 'Netflix', streamUrl:'https://fbsite.top/series/1253633/'
   },
   {
     id: 113, type: 'series', title: 'Пацаны', genre: 'Супергерои',
     rating: 8.7, mood: ['dark', 'tense', 'fun'],
     year: 2019, duration: '4 сезона',
     description: 'Группа людей противостоит коррумпированным супергероям, работающим на мегакорпорацию. Жёсткая сатира на супергеройский жанр и корпоративную культуру.',
-    poster: 'posters/113.jpg', trailer: 'tEOCpMQxqQs', director: 'Amazon Prime',
+    poster: 'posters/113.jpg', trailer: 'tEOCpMQxqQs', director: 'Amazon Prime', streamUrl:'https://fbsite.top/series/460586/'
   },
 ];
 
